@@ -132,8 +132,8 @@ function checkAccount(accontName) {
   return true;
 }
 
-function getAccount(accountName) {
-  const accountJSON = fs.readFileSync(`accounts/${accountName}.json`, {
+function getAccount(accontName) {
+  const accountJSON = fs.readFileSync(`acconts/${accontName}.json`, {
     encoding: "utf8",
     flag: "r",
   });
@@ -153,13 +153,9 @@ function addAmount(accontName, amount) {
 
   accountData.balance = parseFloat(amount) + parseFloat(accountData.balance);
 
-  fs.writeFileSync(
-    `accounts/${accontName}.json`,
-    JSON.stringify(accountData),
-    function (err) {
-      console.log(err);
-    }
-  );
+  fs.writeFileSync(`acconts/${accontName}.json`, JSON.stringify(accountData), (err) => {
+    console.log(err);
+  });
 
   console.log(
     chalk.green(`Foi depositado o valor de R$${amount} na sua conta!`)
